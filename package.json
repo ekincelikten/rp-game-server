@@ -1,7 +1,8 @@
+
 {
-  "name": "rp-game-server",
+  "name": "hortlakli-koy",
   "version": "1.0.0",
-  "description": "Gulyabani ve K\u00f6yl\u00fcler temal\u0131 \u00e7ok oyunculu rol yapma oyunu sunucusu",
+  "description": "Hortlaklı Köy - Web Tabanlı Çok Oyunculu Rol Yapma Oyunu",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
