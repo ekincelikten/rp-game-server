@@ -1,0 +1,13 @@
+{
+  "name": "rp-game-server",
+  "version": "1.0.0",
+  "description": "Gulyabani ve K\u00f6yl\u00fcler temal\u0131 \u00e7ok oyunculu rol yapma oyunu sunucusu",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  }
+}
