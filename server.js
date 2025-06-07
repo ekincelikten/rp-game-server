@@ -1,4 +1,3 @@
-// server.js - Tüm temel işlevler düzeltilmiş hali
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
@@ -12,6 +11,7 @@ app.use('/avatars', express.static(path.join(__dirname, 'avatars')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const MAX_PLAYERS = 6;
+let usedAvatars = [];
 let lobby = {
   players: [],
   phase: 'lobby',
@@ -67,7 +67,16 @@ io.on('connection', (socket) => {
     if (!nickname || lobby.players.find(p => p.nickname === nickname)) return;
     if (lobby.players.length >= MAX_PLAYERS) return;
 
-    const avatarIndex = Math.floor(Math.random() * 12) + 1;
+    // Benzersiz avatar seçimi
+    let avatarIndex;
+    const available = Array.from({ length: 12 }, (_, i) => i + 1).filter(i => !usedAvatars.includes(i));
+    if (available.length > 0) {
+      avatarIndex = available[Math.floor(Math.random() * available.length)];
+      usedAvatars.push(avatarIndex);
+    } else {
+      avatarIndex = Math.floor(Math.random() * 12) + 1; // fallback
+    }
+
     const player = {
       id: socket.id,
       nickname,
